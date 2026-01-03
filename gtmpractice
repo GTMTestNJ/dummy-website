@@ -1,23 +1,108 @@
-index.html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<!-- Google Tag Manager -->
+  <meta charset="UTF-8">
+  <title>GTM Practice Website</title>
+
+  <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TN4B9SG5');</script>
 <!-- End Google Tag Manager -->
-  <title>My Dummy Website</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      line-height: 1.6;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+    section {
+      margin-bottom: 80px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 40px;
+    }
+    input {
+      padding: 10px;
+      width: 250px;
+    }
+  </style>
 </head>
+
 <body>
-<!-- Google Tag Manager (noscript) -->
+
+  <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN4B9SG5"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-  <h1>Hello! This is my dummy website</h1>
-  <p>GTM practice site</p>
-  <button>Click Me</button>
+
+  <h1>Google Tag Manager Practice Site</h1>
+
+  <!-- BUTTON CLICK -->
+  <section>
+    <h2>1️⃣ Button Click Tracking</h2>
+    <button id="cta-btn">Primary CTA Button</button>
+  </section>
+
+  <!-- FORM SUBMIT -->
+  <section>
+    <h2>2️⃣ Form Submission Tracking</h2>
+    <form id="signup-form">
+      <input type="email" placeholder="Enter your email" required />
+      <br><br>
+      <button type="submit">Submit Form</button>
+    </form>
+  </section>
+
+  <!-- CUSTOM EVENT -->
+  <section>
+    <h2>3️⃣ Custom dataLayer Event</h2>
+    <button id="custom-event-btn">Trigger Custom Event</button>
+  </section>
+
+  <!-- SCROLL -->
+  <section>
+    <h2>4️⃣ Scroll Tracking Section</h2>
+    <p>Scroll down to trigger scroll depth events.</p>
+    <div style="height:1200px;"></div>
+    <p>Bottom of page reached 🎯</p>
+  </section>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    // CTA Button Click
+    document.getElementById("cta-btn").addEventListener("click", function () {
+      dataLayer.push({
+        event: "cta_click",
+        button_name: "primary_cta"
+      });
+    });
+
+    // Form Submission
+    document.getElementById("signup-form").addEventListener("submit", function () {
+      dataLayer.push({
+        event: "form_submit",
+        form_name: "email_signup"
+      });
+    });
+
+    // Custom Event
+    document.getElementById("custom-event-btn").addEventListener("click", function () {
+      dataLayer.push({
+        event: "custom_event",
+        category: "gtm_practice",
+        action: "custom_button_click"
+      });
+    });
+  </script>
+
 </body>
 </html>
