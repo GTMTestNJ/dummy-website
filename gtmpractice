@@ -16,18 +16,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     body {
       font-family: Arial, sans-serif;
       padding: 40px;
-      line-height: 1.6;
     }
     button {
       padding: 12px 20px;
+      margin: 10px 0;
       font-size: 16px;
       cursor: pointer;
-      margin: 10px 0;
     }
     section {
       margin-bottom: 80px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 40px;
     }
     input {
       padding: 10px;
@@ -38,24 +35,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <body>
 
-<!-- Google Tag Manager (noscript) -->
+ <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN4B9SG5"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-  <h1>Google Tag Manager Practice Site</h1>
+  <h1>GTM Practice Website</h1>
 
-  <!-- BUTTON CLICK -->
+  <!-- BUTTON -->
   <section>
-    <h2>1️⃣ Button Click Tracking</h2>
+    <h2>Button Click Tracking</h2>
     <button id="cta-btn">Primary CTA Button</button>
   </section>
 
-  <!-- FORM SUBMIT -->
+  <!-- FORM -->
   <section>
-    <h2>2️⃣ Form Submission Tracking</h2>
+    <h2>Form Submission Tracking</h2>
     <form id="signup-form">
-      <input type="email" placeholder="Enter your email" required />
+      <input type="email" required placeholder="Enter email" />
       <br><br>
       <button type="submit">Submit Form</button>
     </form>
@@ -63,22 +60,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- CUSTOM EVENT -->
   <section>
-    <h2>3️⃣ Custom dataLayer Event</h2>
+    <h2>Custom Event Tracking</h2>
     <button id="custom-event-btn">Trigger Custom Event</button>
   </section>
 
   <!-- SCROLL -->
   <section>
-    <h2>4️⃣ Scroll Tracking Section</h2>
-    <p>Scroll down to trigger scroll depth events.</p>
+    <h2>Scroll Section</h2>
     <div style="height:1200px;"></div>
-    <p>Bottom of page reached 🎯</p>
+    <p>Bottom reached</p>
   </section>
 
   <script>
     window.dataLayer = window.dataLayer || [];
 
-    // CTA Button Click
+    // Button click
     document.getElementById("cta-btn").addEventListener("click", function () {
       dataLayer.push({
         event: "cta_click",
@@ -86,15 +82,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
 
-    // Form Submission
-    document.getElementById("signup-form").addEventListener("submit", function () {
+    // Form submit (FIXED)
+    document.getElementById("signup-form").addEventListener("submit", function (event) {
+      event.preventDefault(); // 🔴 THIS FIXES IT
+
       dataLayer.push({
         event: "form_submit",
         form_name: "email_signup"
       });
     });
 
-    // Custom Event
+    // Custom event
     document.getElementById("custom-event-btn").addEventListener("click", function () {
       dataLayer.push({
         event: "custom_event",
