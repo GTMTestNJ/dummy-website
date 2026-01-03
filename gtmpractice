@@ -1,0 +1,12 @@
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Dummy Website</title>
+</head>
+<body>
+  <h1>Hello! This is my dummy website</h1>
+  <p>GTM practice site</p>
+  <button>Click Me</button>
+</body>
+</html>
